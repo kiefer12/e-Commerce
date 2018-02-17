@@ -1,0 +1,36 @@
+#nav-mobile{
+    position: absolute;
+    right: 0;
+}
+
+html{
+    font-family: "Nanum Myeongjo";
+}
+
+body{
+    background-color: #F8F9F1;
+}
+
+.nav-wrapper .brand-logo img{
+    /* position: relative;
+    top: 1px; */
+    height: 2.2em;
+}
+
+.brand-logo{
+    font-family: "Berkshire Swash";
+}
+
+/* label color */
+.input-field label {
+ color: black;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: black;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid black;
+ box-shadow: 0 1px 0 0 black;
+}
