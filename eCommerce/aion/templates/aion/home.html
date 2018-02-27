@@ -1,0 +1,41 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block content %}
+<!-- This file displays the content of the website -->
+
+<div class="container" id="about">
+    <div class="row">
+        <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="{% static "images/watch1.jpg"%}"></a>
+            <a class="carousel-item" href="#two!"><img src="{% static "images/watch2.jpg"%}"></a>
+            <a class="carousel-item" href="#three!"><img src="{% static "images/watch3.jpg"%}"></a>
+            <a class="carousel-item" href="#four!"><img src="{% static "images/watch4.jpg"%}"></a>
+            <a class="carousel-item" href="#five!"><img src="{% static "images/watch5.jpg"%}"></a>
+        </div>
+    </div>
+</div>
+      <div id="contact">
+          Contact
+      </div>
+
+<!-- RELOCATE THIS SECTION TO A DIFFERENT FILE LATER -->
+<div class="main">
+    {% for product in products %}
+    <div class="product_post">
+        {% if product.item_photo %}
+        <div class="product_img">
+            <a href="#"><img class="item_photo" src="{{product.item_photo.url}}"/></a>
+        </div>
+        {% endif %}
+        
+        {% if product.item_name %}
+        <div class="product_img">
+            <a>{{product.item_name}}</a>
+        </div>
+        {% endif %}
+        
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

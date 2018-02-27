@@ -32,3 +32,20 @@ body{
 nav ul li:hover {
    background-color: #e0f2f1;
 }
+
+.main {
+    margin: 0%;
+    width: 100%;
+    padding: 10px;
+}
+
+.product_post{
+    width: 20%;
+    background-color: orange;
+	margin:0 auto;
+}
+
+img.item_photo{
+	width: 100%;
+    object-fit: contain;
+}
