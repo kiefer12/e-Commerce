@@ -30,16 +30,17 @@ class HomeView(generic.ListView):
 
 
 def login_view(request):
-    title = "Login"
-    form = UserLoginForm(request.POST or None)
+	print(request.user)
+	title = "Login"
+	form = UserLoginForm(request.POST or None)
     
-    if form.is_valid():
-        username = form.cleaned_data.get("username")
-        password = form.cleaned_data.get("password")
-        user= authenticate(username=username, password=password)
-        login(request,user)
-        return HttpResponseRedirect('/home/')
-    return render(request, "aion/login.html",{"form":form, "title": title})
+	if form.is_valid():
+		username = form.cleaned_data.get("username")
+		password = form.cleaned_data.get("password")
+		user= authenticate(username=username, password=password)
+		login(request,user)
+		return HttpResponseRedirect('/home/')
+	return render(request, "aion/login.html",{"form":form, "title": title})
 
 class CreateProduct(CreateView):
 	template_name = 'addproduct.html'
