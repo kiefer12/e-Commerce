@@ -1,18 +1,12 @@
 from django.shortcuts import render
 from django.shortcuts import HttpResponse, render, redirect,HttpResponseRedirect, get_object_or_404, get_list_or_404
 from django.views.generic import TemplateView
-<<<<<<< HEAD
 from django.views.generic.edit import CreateView
-=======
->>>>>>> d2052ba317764b2917d73a81f843c624c530f73d
 from django.views import generic
 from aion.forms import *
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from .models import *
-<<<<<<< HEAD
 
-=======
->>>>>>> d2052ba317764b2917d73a81f843c624c530f73d
 class HomePageView(TemplateView):
     template_name = 'home.html'
     
@@ -21,11 +15,7 @@ class HomeView(generic.ListView):
     context_object_name = 'products'
 #    paginate_by = 10
     queryset = Product.objects.all().order_by('-id')
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> d2052ba317764b2917d73a81f843c624c530f73d
 #    def get_paginate_by(self, queryset):
 #        self.paginate_by = self.request.GET.get('paginate_by', self.paginate_by)
 #        return self.paginate_by
@@ -50,9 +40,9 @@ def login_view(request):
         login(request,user)
         return HttpResponseRedirect('/home/')
     return render(request, "aion/login.html",{"form":form, "title": title})
-<<<<<<< HEAD
 
 class CreateProduct(CreateView):
+	template_name = 'addproduct.html'
 	model = Product
-=======
->>>>>>> d2052ba317764b2917d73a81f843c624c530f73d
+	fields = ['item_name','item_quantity','item_photo']
+
