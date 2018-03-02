@@ -20,6 +20,7 @@
 
 <!-- RELOCATE THIS SECTION TO A DIFFERENT FILE LATER -->
 <div class="main">
+<!--
     {% for product in products %}
     <div class="product_post">
         {% if product.item_photo %}
@@ -36,6 +37,34 @@
         
     </div>
     {% endfor %}
+-->
+    
+    {% for product in products %}
+    
+     <div class="row product_post">
+          <div class="card">
+            <div class="card-image">
+             {% if product.item_photo %}
+              <img class="item_photo"src="{{product.item_photo.url}}">
+              {% endif %}
+              
+            </div>
+            <div class="card-content">
+              <span class="card-title textinpost">{{product.item_name}}</span>
+            </div>
+            <div class="card-action">
+              <a href="#">$ {{product.item_price}}</a>
+            </div>
+          </div>
+    
+      </div>
+    {% endfor %}
 </div>
+
+
+
+
+
+
 
 {% endblock %}
