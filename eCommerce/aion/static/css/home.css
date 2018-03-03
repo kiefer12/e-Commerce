@@ -52,10 +52,13 @@ nav ul li:hover {
     text-overflow: ellipsis;
 }
 
+
 .product_post{
     width: 20%;
-    padding: 5px;
-
+    padding-left: 10px;
+    padding-right: 10px;
+/*    padding-top: 5px;*/
+    display:block;
 }
 
 img.item_photo{
@@ -97,4 +100,22 @@ img.item_photo{
 .login_body{
     background: url("/static/images/black and orange.png") 73% 0 no-repeat fixed;
     background-size: 2560px 1440px;
+}
+
+/*Product Details*/
+.main_product_details{
+    margin: 0%;
+    width: 100%;
+    padding-right:5px;
+    padding-left:5px;
+    align-content: center;
+}
+
+.product_details_post{
+    width: 50%;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 50px;
+    display:block;
 }

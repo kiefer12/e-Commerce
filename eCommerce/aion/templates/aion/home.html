@@ -1,4 +1,4 @@
-{% extends 'navigationbar.html' %}
+{% extends 'aion/navigationbar.html' %}
 {% load static %}
 {% block content %}
 <!-- This file displays the content of the website -->
@@ -20,27 +20,8 @@
 
 <!-- RELOCATE THIS SECTION TO A DIFFERENT FILE LATER -->
 <div class="main">
+    {% for product in products %}
 <!--
-    {% for product in products %}
-    <div class="product_post">
-        {% if product.item_photo %}
-        <div class="product_img">
-            <a href="#"><img class="item_photo" src="{{product.item_photo.url}}"/></a>
-        </div>
-        {% endif %}
-        
-        {% if product.item_name %}
-        <div class="product_img">
-            <a>{{product.item_name}}</a>
-        </div>
-        {% endif %}
-        
-    </div>
-    {% endfor %}
--->
-    
-    {% for product in products %}
-    
      <div class="row product_post">
           <div class="card">
             <div class="card-image">
@@ -58,7 +39,29 @@
           </div>
     
       </div>
-    {% endfor %}
+-->
+        <div class="item product_post">
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+             {% if product.item_photo %}
+                <a href="{% url 'viewproduct' product.id %}"><img class="item_photo"src="{{product.item_photo.url}}"></a>
+              {% endif %}
+              
+            </div>
+            <div class="card-content">
+              <span class="card-title textinpost">{{product.item_name}}</span>
+            </div>
+            <div class="card-action">
+              <a href="#">$ {{product.item_price}}</a>
+            </div>
+          </div>
+      </div>
+    
+    {% if forloop.counter|divisibleby:5 %}
+    <br>
+    {% endif %}
+    {% endfor %}    
+    
 </div>
 
 
