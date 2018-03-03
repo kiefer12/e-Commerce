@@ -25,6 +25,15 @@ class User_Details(models.Model):
     billing_address = models.ForeignKey(Address_Details, on_delete=models.CASCADE, related_name ="billing_address")
     shipping_address = models.ForeignKey(Address_Details, on_delete=models.CASCADE,related_name ="shipping_address")
     
+    type_choice = (
+        ('Customer', 'Customer'),
+        ('Product Manager', 'Product Manager'),
+        ('Accounting Manager', 'Accounting Manager'),
+        ('Administrator', 'Administrator'),
+    )
+    
+    account_type = models.CharField(max_length=50, choices=type_choice, default=type_choice[0][0])
+    
     def __str__(self):
         return str(self.user_id) +', '+ self.first_name +' '+ self.last_name
     

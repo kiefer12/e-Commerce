@@ -119,3 +119,26 @@ img.item_photo{
     padding-top: 50px;
     display:block;
 }
+
+.user_details_post{
+    width: 66.66%;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 50px;
+    display:block;
+}
+
+.prof_background{
+      height:250px;
+}
+
+#profile-page-header .card-profile-image {
+    width: 110px;
+    position: absolute;
+    top: 190px;
+    z-index: 1;
+    left: 40px;
+    cursor: pointer;
+    margin: 0;
+}

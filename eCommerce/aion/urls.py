@@ -9,4 +9,5 @@ urlpatterns = [
  path('addproduct/', views.CreateProduct.as_view(), name='addproduct'),
     
     path('product/<int:pk>/', views.ViewProduct.as_view(), name='viewproduct'),
+    path('user/<int:pk>/', views.ViewAccount.as_view(), name='viewaccount'),
     ]

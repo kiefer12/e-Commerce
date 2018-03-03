@@ -54,3 +54,12 @@ class ViewProduct(generic.DetailView):
         context = super().get_context_data(**kwargs)
         return context
 
+class ViewAccount(generic.DetailView):
+    model = User
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user_details"] = User_Details.objects.get(user_id=self.object)
+        context["user"] = self.object
+        
+        return context
+
