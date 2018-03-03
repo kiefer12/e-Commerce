@@ -3,3 +3,7 @@
 ### This project uses:
 1. The Django Framework
 2. Materialize Design
+### Django Packages:
+1. django-crispy-forms
+2. django-materialize-css
+3. crispy-forms-materialize
