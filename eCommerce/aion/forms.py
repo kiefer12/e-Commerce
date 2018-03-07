@@ -3,40 +3,26 @@ from .models import *
 from django import forms
 from django.contrib.auth import authenticate, login, logout, get_user_model
 
-#class UserForm(forms.ModelForm):
-#    password = forms.CharField(widget=forms.PasswordInput)
-#    
-#    class Meta:
-#        model = User
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+    class Meta:
+        model = User
+        fields = ('username','password','email')
+
+class UserDetailsForm(forms.ModelForm):
+    
+    class Meta:
+        model = User_Details
+        exclude = ('user_id','account_type', "billing_address", "shipping_address")
 #        fields = ('username','password','first_name','last_name')
-#        labels = {
-#            'first_name': 'Name',
-#            'last_name': 'Degree Program/Office'
-#        }
-#
-#class OfferPurchaseForm(forms.ModelForm):
-#    class Meta:
-#        model = Offer
-#        fields = ('purchase_offer',)
-#        #exclude = ('user_id','post_id','isAccept','reason','isPurchase')
-#    
-#    def __init__(self, *args, **kwargs):
-#        self.user = kwargs.pop('user')
-#        super(OfferPurchaseForm, self).__init__(*args, **kwargs)
-#        #self.fields['exchange_offer'].queryset = Post.objects.filter(user_id__id=self.user.id)
-#        
-#class OfferExchangeForm(forms.ModelForm):
-#    class Meta:
-#        model = Offer
-#        fields = ('exchange_offer',)
-#        #exclude = ('user_id','post_id','isAccept','reason','isPurchase')
-#    
-#    def __init__(self, *args, **kwargs):
-#        self.user = kwargs.pop('user')
-#        super(OfferExchangeForm, self).__init__(*args, **kwargs)
-#        self.fields['exchange_offer'].queryset = Post.objects.filter(user_id__id=self.user.id)
-#
-#        
+
+class AddressDetailsForm(forms.ModelForm):
+    
+    class Meta:
+        model = Address_Details
+        fields = '__all__'
+
 class UserLoginForm(forms.Form):
     User = get_user_model()
     username = forms.CharField()

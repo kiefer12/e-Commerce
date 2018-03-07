@@ -28,6 +28,46 @@ class HomeView(generic.ListView):
 #
 #        return context
 
+class UserFormView(generic.View):
+    form_class = UserForm
+    second_form_class = UserDetailsForm
+    third_form_class = AddressDetailsForm
+    title = "Register"
+    template_name = 'aion/registration_form.html'
+    
+    #display blank form
+    def get(self, request):
+        form1 = self.form_class(None)
+        form2 = self.second_form_class(None)
+        form3 = self.third_form_class(None)
+        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, "title": self.title})
+    
+    #process form data
+    def post(self, request):
+        form1 = self.form_class(request.POST)
+        form2 = self.second_form_class(request.POST)
+        form3 = self.third_form_class(request.POST)
+        
+        if form1.is_valid() and form2.is_valid() and form3.is_valid():
+            
+            user = form1.save(commit=False)
+            
+            username = form1.cleaned_data['username']
+            password = form1.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+            
+            #return User objects if credentials are correct
+            user = authenticate(username=username,password=password)
+            
+            if user is not None:
+                
+                if user.is_active:
+                    login(request,user)
+                    return HttpResponseRedirect('/home/')
+                
+        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, "title": self.title})
+
 
 def login_view(request):
 	print(request.user)
