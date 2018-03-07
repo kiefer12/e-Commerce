@@ -1,6 +1,7 @@
 {% extends 'aion/navigationbar.html' %}
 {% load static %}
 {% block content %}
+
 <!-- This file displays the content of the website -->
 
 <div class="container" id="about">
@@ -17,9 +18,9 @@
       <div id="contact">
           Contact
       </div>
-
-<!-- RELOCATE THIS SECTION TO A DIFFERENT FILE LATER -->
-<div class="main">
+<br><br>
+<div class=" row main"id="home">
+    
     {% for product in products %}
 <!--
      <div class="row product_post">
@@ -46,6 +47,7 @@
              {% if product.item_photo %}
                 <a href="{% url 'viewproduct' product.id %}"><img class="item_photo"src="{{product.item_photo.url}}"></a>
               {% endif %}
+                <center><a class="waves-effect waves-light btn modal-trigger grey lighten-1" href="#product_modal{{product.id}}">Quick Look</a></center>
               
             </div>
             <div class="card-content">
@@ -56,18 +58,36 @@
             </div>
           </div>
       </div>
+
+    <div id="product_modal{{product.id}}" class="modal item m_product_details_post"> 
+    
+          <div class="card">
+            <div class="card-image">
+             
+              {% if product.item_photo %}
+                <a href="{% url 'viewproduct' product.id %}"><img class="m_item_photo"src="{{product.item_photo.url}}"></a>
+              {% endif %}
+              
+              
+            </div>
+            <div class="card-content">
+              <span class="card-title textinpost"> {{product.item_name}} </span>
+                {{product.item_description|linebreaks}}
+            </div>
+            <div class="card-action">
+              <a href="#">$ {{product.item_price}}</a>
+            </div>
+          </div>
+      </div>
+
+    
+    <br>
     
     {% if forloop.counter|divisibleby:5 %}
     <br>
     {% endif %}
     {% endfor %}    
-    
-</div>
-
-
-
-
-
-
+    </div>
+<!-- RELOCATE THIS SECTION TO A DIFFERENT FILE LATER -->
 
 {% endblock %}

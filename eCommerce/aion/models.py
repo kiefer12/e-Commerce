@@ -45,6 +45,7 @@ class Product(models.Model):
     user_id = models.ForeignKey(User,on_delete=models.CASCADE)
     item_photo = models.FileField(blank=True,null=True)
     item_name = models.CharField(max_length=200)
+    item_description = models.TextField(default='')
     item_quantity = models.IntegerField(default=0)
     item_price = models.DecimalField(default=0, max_digits=19, decimal_places=2)
     isPurchased = models.BooleanField(default=False)
