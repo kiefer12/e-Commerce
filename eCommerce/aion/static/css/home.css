@@ -156,3 +156,13 @@ img.m_item_photo{
     cursor: pointer;
     margin: 0;
 }
+
+
+.ql_button_div {
+    position:absolute;
+    bottom:5px;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+

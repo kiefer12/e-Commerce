@@ -47,8 +47,8 @@
              {% if product.item_photo %}
                 <a href="{% url 'viewproduct' product.id %}"><img class="item_photo"src="{{product.item_photo.url}}"></a>
               {% endif %}
-                <center><a class="waves-effect waves-light btn modal-trigger grey lighten-1" href="#product_modal{{product.id}}">Quick Look</a></center>
-              
+                <center><div class="ql_button ql_button_div"><a class="waves-effect waves-light btn modal-trigger grey lighten-1 " href="#product_modal{{product.id}}">Quick Look</a></div>
+              </center>
             </div>
             <div class="card-content">
               <span class="card-title textinpost">{{product.item_name}}</span>
@@ -59,9 +59,9 @@
           </div>
       </div>
 
-    <div id="product_modal{{product.id}}" class="modal item m_product_details_post"> 
+    <div id="product_modal{{product.id}}" class="modal item m_product_details_post card"> 
     
-          <div class="card">
+         
             <div class="card-image">
              
               {% if product.item_photo %}
@@ -77,7 +77,7 @@
             <div class="card-action">
               <a href="#">$ {{product.item_price}}</a>
             </div>
-          </div>
+
       </div>
 
     
