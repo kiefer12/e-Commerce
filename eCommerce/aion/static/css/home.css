@@ -88,14 +88,23 @@ img.item_photo{
     width:95%;
 }
 
-#div_id_username, #div_id_password{
+.inner_login_wrap{
+    padding-left:15px;
+    padding-right:15px;
+}
+
+/*
+#div_id_username, #div_id_password, #div_id_email{
     padding-left: 20px;
     padding-right: 20px;
 }
+*/
 
+/*
 .required{
     padding-left: 20px;
 }
+*/
 
 .login_body{
     background: url("/static/images/black and orange.png") 73% 0 no-repeat fixed;
@@ -164,5 +173,19 @@ img.m_item_photo{
     right: 0;
     left: 0;
     margin: auto;
+}
+
+.register_div{
+    position: relative;
+}
+
+.inner_register{
+  width: 66%;
+  margin: auto;  
+  position: absolute;
+  left:0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 

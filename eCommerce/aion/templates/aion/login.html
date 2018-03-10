@@ -16,17 +16,21 @@
             </div>
           </div>
             
-            
-            <!--Start of form-->
-            {{ form|crispy }}
-            <!--End of Form-->
-         
+            <div class="col s12">
+                <div class="inner_login_wrap">
+                <!--Start of form-->
+                {{ form|crispy }}
+                <!--End of Form-->
+                </div>
+            </div>
+<!--
           <div class="row">
-            <div class="col s12 m12 l12 ml-2 mt-3" id="div_id_username">
+            <div class="col s11 m12 l12 ml-2 mt-3" id="div_id_username">
               <input type="checkbox" id="remember-me" />
               <label for="remember-me">Remember me</label>
             </div>
           </div>
+-->
 
           <div class="row">
             <div class="input-field col s12">
@@ -36,7 +40,7 @@
           </div>
           <div class="row">
             <center>
-              <a href="#">Create Account</a>
+              <a href="{% url 'register' %}">Create Account</a>
 
                 </center>
           </div>

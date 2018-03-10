@@ -14,14 +14,14 @@ class UserDetailsForm(forms.ModelForm):
     
     class Meta:
         model = User_Details
-        exclude = ('user_id','account_type', "billing_address", "shipping_address")
-#        fields = ('username','password','first_name','last_name')
+        exclude = ('user_id','account_type')
+#        exclude = ('user_id','account_type', "billing_address", "shipping_address")
 
 class AddressDetailsForm(forms.ModelForm):
     
     class Meta:
         model = Address_Details
-        fields = '__all__'
+        exclude = ('user_id', 'address_type')
 
 class UserLoginForm(forms.Form):
     User = get_user_model()

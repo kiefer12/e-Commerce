@@ -31,24 +31,27 @@ class HomeView(generic.ListView):
 class UserFormView(generic.View):
     form_class = UserForm
     second_form_class = UserDetailsForm
-    third_form_class = AddressDetailsForm
+    bill_form_class = AddressDetailsForm
+    ship_form_class = AddressDetailsForm
     title = "Register"
-    template_name = 'aion/registration_form.html'
+    template_name = 'aion/register.html'
     
     #display blank form
     def get(self, request):
         form1 = self.form_class(None)
         form2 = self.second_form_class(None)
-        form3 = self.third_form_class(None)
-        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, "title": self.title})
+        form3 = self.bill_form_class(None)
+        form4 = self.ship_form_class(None)
+        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, 'form4':form4,"title": self.title})
     
     #process form data
     def post(self, request):
         form1 = self.form_class(request.POST)
         form2 = self.second_form_class(request.POST)
-        form3 = self.third_form_class(request.POST)
+        form3 = self.bill_form_class(request.POST)
+        form4 = self.ship_form_class(request.POST)
         
-        if form1.is_valid() and form2.is_valid() and form3.is_valid():
+        if form1.is_valid() and form2.is_valid() and form3.is_valid() and form4.is_valid():
             
             user = form1.save(commit=False)
             
@@ -56,6 +59,18 @@ class UserFormView(generic.View):
             password = form1.cleaned_data['password']
             user.set_password(password)
             user.save()
+            
+            
+            user_details = form2.save(commit=False)
+            user_details.user_id = user
+            
+            billing_address = form3.save()
+            shipping_address = form4.save()
+            
+            user_details.billing_address = billing_address
+            user_details.shipping_address = shipping_address
+            user_details.save()
+            
             
             #return User objects if credentials are correct
             user = authenticate(username=username,password=password)
@@ -65,9 +80,10 @@ class UserFormView(generic.View):
                 if user.is_active:
                     login(request,user)
                     return HttpResponseRedirect('/home/')
+            
+            
                 
-        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, "title": self.title})
-
+        return render(request, self.template_name,{'form1':form1,'form2':form2,'form3':form3, 'form4':form4, "title": self.title})
 
 def login_view(request):
 	print(request.user)
