@@ -98,11 +98,15 @@ def login_view(request):
 		return HttpResponseRedirect('/home/')
 	return render(request, "aion/login.html",{"form":form, "title": title})
 
+#Add Product
 class CreateProduct(CreateView):
-	template_name = 'addproduct.html'
-	model = Product
-	fields = ['item_name','item_quantity','item_photo']
-
+    form_class = ProductForm
+    template_name = 'addproduct.html'
+    
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user
+        return super(CreateProduct, self).form_valid(form)
+    
 class ViewProduct(generic.DetailView):
     model = Product
     

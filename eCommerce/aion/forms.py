@@ -3,6 +3,13 @@ from .models import *
 from django import forms
 from django.contrib.auth import authenticate, login, logout, get_user_model
 
+class ProductForm(forms.ModelForm):
+    
+    class Meta:
+        model = Product
+        exclude = ('user_id', 'isPurchased')
+
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     

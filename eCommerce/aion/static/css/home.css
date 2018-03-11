@@ -189,3 +189,7 @@ img.m_item_photo{
   bottom: 0;
 }
 
+select{
+    display:inherit;
+}
+
