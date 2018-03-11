@@ -99,13 +99,46 @@ def login_view(request):
 	return render(request, "aion/login.html",{"form":form, "title": title})
 
 #Add Product
-class CreateProduct(CreateView):
+class CreateProductView(CreateView):
     form_class = ProductForm
     template_name = 'addproduct.html'
     
     def form_valid(self, form):
         form.instance.user_id = self.request.user
-        return super(CreateProduct, self).form_valid(form)
+        return super(CreateProductView, self).form_valid(form)
+
+#Edit Product
+class EditProductView(generic.UpdateView):
+    form_class = ProductForm
+    template_name = 'addproduct.html'
+    
+    def get_object(self, queryset=None):
+        obj = Product.objects.get(id=self.kwargs['pk'])
+        return obj
+    
+    def get_context_data(self, **kwargs):
+        context = super(EditProductView, self).get_context_data(**kwargs)
+        context["loggeduser"] = self.request.user.id
+        #context["post_id"] = Offer.objects.get(id=self.kwargs['offer_id']).post_id.id
+        return context
+
+#Delete Product
+class DeleteProductView(generic.DeleteView):
+    model = Product
+    
+    def get_object(self, queryset=None):
+        obj = Product.objects.get(id=self.kwargs['pk'])
+        return obj
+    
+    def get_context_data(self, **kwargs):
+        context = super(DeleteProductView, self).get_context_data(**kwargs)
+        context["loggeduser"] = self.request.user.id
+        return context
+    
+    def get_success_url(self):
+        # Assuming there is a ForeignKey from Comment to Post in your model 
+        return reverse('home')
+
     
 class ViewProduct(generic.DetailView):
     model = Product

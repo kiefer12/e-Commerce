@@ -193,3 +193,7 @@ select{
     display:inherit;
 }
 
+.dropdown-content{
+    min-width:175px;
+}
+
