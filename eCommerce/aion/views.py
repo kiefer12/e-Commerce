@@ -133,6 +133,7 @@ class DeleteProductView(generic.DeleteView):
     def get_context_data(self, **kwargs):
         context = super(DeleteProductView, self).get_context_data(**kwargs)
         context["loggeduser"] = self.request.user.id
+#        context["object"] = Product.objects.get(id=self.kwargs['pk'])
         return context
     
     def get_success_url(self):

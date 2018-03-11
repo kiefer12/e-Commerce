@@ -197,3 +197,14 @@ select{
     min-width:175px;
 }
 
+.right_btn{
+    float: right;
+    bottom: 7px;
+}
+
+.edit_btn{
+       left: 5px;
+}
+
+
+
