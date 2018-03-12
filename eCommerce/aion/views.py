@@ -118,7 +118,7 @@ class EditProductView(generic.UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super(EditProductView, self).get_context_data(**kwargs)
-        context["loggeduser"] = self.request.user.id
+        context["loggeduser"] = self.request.user
         #context["post_id"] = Offer.objects.get(id=self.kwargs['offer_id']).post_id.id
         return context
 
@@ -132,7 +132,7 @@ class DeleteProductView(generic.DeleteView):
     
     def get_context_data(self, **kwargs):
         context = super(DeleteProductView, self).get_context_data(**kwargs)
-        context["loggeduser"] = self.request.user.id
+        context["loggeduser"] = self.request.user
 #        context["object"] = Product.objects.get(id=self.kwargs['pk'])
         return context
     
@@ -146,6 +146,7 @@ class ViewProduct(generic.DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["loggeduser"] = self.request.user
         return context
 
 class ViewAccount(generic.DetailView):
