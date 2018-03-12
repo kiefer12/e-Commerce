@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from autoslug import AutoSlugField
+
 
 class Address_Details(models.Model):
     house_number = models.CharField(max_length=200)
@@ -51,12 +53,13 @@ class Product(models.Model):
     isPurchased = models.BooleanField(default=False)
     
     type_choice = (
-        ('Analog', 'Analog watch'),
-        ('Digital', 'Digital watch'),
-        ('Smart', 'Smart watch'),
+        ('Analog watch', 'Analog watch'),
+        ('Digital watch', 'Digital watch'),
+        ('Smart watch', 'Smart watch'),
     )
     
     item_type = models.CharField(max_length=50, choices=type_choice, default=type_choice[0][0])
+    item_type_slug = AutoSlugField(populate_from='item_type', blank=True)
     
     def __str__(self):
         return self.item_name +' ('+str(self.id)+') '
